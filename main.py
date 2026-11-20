@@ -2,7 +2,9 @@ import secrets
 import string
 
 class PasswordGenerator:
+    """Генератор стойких паролей с настраиваемыми параметрами"""
     def __init__(self, length=12, use_digits=True, use_chars=True, use_symbols=True):
+        """Инициализирует параметры генератора паролей"""
         self.length = length
         self.use_digits = use_digits
         self.use_chars = use_chars
@@ -10,10 +12,12 @@ class PasswordGenerator:
 
     @property
     def length(self):
+        """Возвращает заданную длину пароля"""
         return self.__length
 
     @length.setter
     def length(self, value):
+        """Проверяет и сохраняет длину пароля"""
         if not isinstance(value, int):
             raise ValueError("Ошибка: длина должна быть числом")
 
@@ -23,6 +27,7 @@ class PasswordGenerator:
         self.__length = value
 
     def generate(self):
+        """Формирует и возвращает случайный пароль по выбранным критериям"""
         pool = ""
         password = []
 
@@ -45,6 +50,7 @@ class PasswordGenerator:
         return "".join(password)
 
 def run():
+    """Запускает интерактивный консольный интерфейс генератора паролей"""
     print("=== Password Generator ===")
 
     while True:
